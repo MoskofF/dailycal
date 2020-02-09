@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Korisnici</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Листа на корисници</h2>
+    <p>Ова е листа на сите корисници на DailyCal</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Корисничко име</th>
+            <th>Е-меил</th>
+            <th>Дата на раѓање</th>
+            <th>Висина</th>
+            <th>Тежина</th>
+            <th>Цел</th>
+            <th>Програма на исхрана</th>
+            <th>Програма за тренинг</th>
+            <th>Инструктор</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="korisnik:${korisniks}">
+            <td th:text="${korisnik.username}">Корисничко име</td>
+            <td th:text="${korisnik.email}">Е-меил</td>
+            <td th:text="${korisnik.data_na_ragjanje}">Дата на раѓање</td>
+            <td th:text="${korisnik.visina}">Висина</td>
+            <td th:text="${korisnik.tezina}">Тежина</td>
+            <td th:text="${korisnik.cel}">Цел</td>
+            <td th:text="${korisnik.programa_za_ishrana}">Програма на исхрана</td>
+            <td th:text="${korisnik.programa_za_trening}">Програма за тренинг</td>
+            <td th:text="${korisnik.instruktor}">Инструктор</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form th:action="@{/korisnici/addnew}" method="post">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Нов корисник</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="username" class="col-form-label">Корисничко име:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-form-label">Лозинка:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Е-Маил:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data_na_ragjanje" class="col-form-label">Датум на раѓање:</label>
+                        <input type="date" class="form-control" id="data_na_ragjanje" name="data_na_ragjanje">
+                    </div>
+<!--
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Updated On:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="updatedOn">
+                    </div>
+-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
