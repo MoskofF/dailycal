@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: glava">
+<body>
+<script th:src="@{/js/profil.js}"></script>
+<div th:replace="fragments/header :: navbar"></div>
+
+<div class="container emp-profile"  style="margin-top: 100px">
+    <div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        <div class="col-3"></div>
+
+                        Лична статистика
+
+
+                    </h5>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Недела</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Месец</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab1" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1" aria-selected="false">Три месеци</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="row" th:object="${kaloriiNedelno}">
+                        <div class="col-md-4">
+                            <label>Внесени калории</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Вкупно</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input th:field="*{kalorii}" disabled>
+                        </div>
+                    </div>
+                    <div class="row" th:object="${metriTriMesecno}">
+                        <div class="col-md-4">
+                            <label>Истрчани метри</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Метри</label>
+
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{metri}" width="50px" disabled>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Време</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{vreme}" width="50px" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Направени вежби</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Вкупно</label>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+                    <div class="row" th:object="${kaloriiMesecno}">
+                        <div class="col-md-4">
+                            <label>Внесени калории</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Вкупно</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input th:field="*{kalorii}" disabled>
+                        </div>
+                    </div>
+                    <div class="row" th:object="${metriMesecno}">
+                        <div class="col-md-4">
+                            <label>Истрчани метри</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Метри</label>
+
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{metri}" width="50px" disabled>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Време</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{vreme}" width="50px" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Направени вежби</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Вкупно</label>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
+
+
+                    <div class="row" th:object="${kaloriiTriMesecno}">
+                        <div class="col-md-4">
+                            <label>Внесени калории</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Вкупно</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input th:field="*{kalorii}" disabled>
+                        </div>
+                    </div>
+                    <div class="row" th:object="${metriTriMesecno}">
+                        <div class="col-md-4">
+                            <label>Истрчани метри</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Метри</label>
+
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{metri}" width="50px" disabled>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Време</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" th:field="*{vreme}" width="50px" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Направени вежби</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Вкупно</label>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>

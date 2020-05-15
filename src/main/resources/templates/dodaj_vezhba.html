@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/header :: glava">
+<body>
+
+<div th:replace="fragments/header :: navbari"></div>
+
+<div class="banner">
+    <div class="container">
+        <div class="banner-text">
+            <div class="banner-heading">
+                Додај вежба
+            </div>
+            <div class="banner-sub-heading">
+
+                <form class="form-group" th:action="@{/dodaj_vezhba}" th:object="${vezhba}" method="post">
+                    <label>Внеси назив на спорт: <input type="text" th:field="*{naziv_vezhba}"></label>
+
+                    <button  type="submit" class="btn btn-warning text-dark btn-banner" style="width: 220px">ДОДАДИ</button>
+                    <input  type="button" class="btn btn-danger text-dark btn-banner" value="НАЗАД" style="width: 220px">
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

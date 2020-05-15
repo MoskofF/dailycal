@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/header :: glava">
+
+
+    <title>Креирај нов тренинг</title>
+</head>
+<body>
+
+<div th:replace="fragments/header :: navbar"></div>
+<script th:src="@{/js/vezhbi.js}"></script>
+<div class="banner">
+    <div class="container">
+        <div class="banner-text">
+            <div class="banner-heading">
+                <p class="ahh">Креирај нов тренинг</p>
+            </div>
+            <div class="banner-sub-heading">
+
+                <form class="form-group" th:action="@{/kreiraj_trening}" th:object="${wrap}" method="post">
+                    <div>
+                        <label class="ahh">Опис тренинг: <input type="text" th:field="*{opis_trening}"></label>
+                    </div>
+                    <div>
+                        <select id="sport" th:field="*{sport}" class="form-control">
+
+                            <option value="-1" utext="No sport"></option>
+                            <option th:each="s:${sportovi}"
+                                    th:value="${s.sport_id}"
+                                    th:utext="${s.naziv_sport}">
+                            </option>
+
+                        </select> <br />
+                    </div>
+                    <div>
+                        <label class="ahh">Избери вежба:</label>
+                        <select id="vezhba" class="form-control">
+
+                            <option th:each="v:${vezhbi}"
+                                    th:value="${v.vezhba_id}"
+                                    th:utext="${v.naziv_vezhba}">
+                            </option>
+
+                        </select> <br />
+                        <label class="ahh">Повторување: <input id="povt" type="text"></label><br />
+                        <div class="table" id="tabela_ve">
+                            <div class="row sodrzhi ahh">
+                                <div class="col-6">Вежба</div>
+                                <div class="col-6">Повторувања</div>
+                            </div>
+                        </div>
+                        <table class="table d-none">
+                            <thead>
+                            <tr class="row sodrzhi ahh">
+                                <th>Храна</th>
+                                <th>Количина</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="trening_vezhba, itemStat : *{vezhbas}">
+                                <td><input class="d-none" th:id="ve__${itemStat.index}__" th:field="*{vezhbas[__${itemStat.index}__].vezhba}"></td>
+                                <td><input class="d-none" th:id="po__${itemStat.index}__" th:field="*{vezhbas[__${itemStat.index}__].povtoruvanja}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary text-dark btn-banner" id="vezhbaAdd" type="button" onclick="addVezhba();">Додај вежба</button><br /><br />
+                    </div>
+
+                    <input  type="button" class="btn btn-danger text-dark btn-banner" value="НАЗАД" style="width: 220px">
+                    <input type="submit" class="btn btn-primary text-dark btn-banner" value="КРЕИРАЈ" style="width: 220px">
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/header :: glava">
+<body>
+<script th:src="@{/js/profil.js}"></script>
+<div th:replace="fragments/header :: navbar"></div>
+
+<div class="banner">
+    <div class="container">
+        <div class="banner-text">
+            <div class="banner-heading boo">
+                Профил
+            </div>
+            <div class="banner-sub-heading">
+
+                <form class="form-group boo" th:action="@{/korisnici/profil}" th:object="${korisnik}" method="post">
+                    <div class="table">
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-4"></div>
+                            <div class="col-2">Опции</div>
+                            <div class="col-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Корисничко име</div>
+                            <div class="col-4" th:text="${korisnik.username}"></div>
+                            <div class="col-2"></div>
+                            <div class="col-3"></div>
+                        </div>
+                        <div class="row" id="email">
+                            <div class="col-3">Емаил</div>
+                            <div class="col-4" th:text="${korisnik.email}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btemail">Измени</button></div>
+                            <div id="EmailDiv" class="d-none col-3">
+                                <input id="emailInput" type="email" th:field="*{email}" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row" id="datum">
+                            <div class="col-3">Роден на:</div>
+                            <div class="col-4" th:text="${korisnik.data_na_ragjanje}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btdata">Измени</button></div>
+                            <div id="datumDiv" class="d-none col-3">
+                                <input id="datumInput" type="date" th:field="*{data_na_ragjanje}" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row" id="visina">
+                            <div class="col-3">Висина</div>
+                            <div class="col-4" th:text="${korisnik.visina}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btvisina">Измени</button></div>
+                            <div id="visinaDiv" class="d-none col-3">
+                                <input id="visinaInput" type="text" th:field="*{visina}" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row" id="tezina">
+                            <div class="col-3">Тежина</div>
+                            <div class="col-4" th:text="${korisnik.tezina}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="bttezhina">Измени</button></div>
+                            <div id="tezhinaDiv" class="d-none col-3">
+                                <input id="tezhinaInput" type="text" th:field="*{tezina}" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row" id="cel">
+                            <div class="col-3">Цел</div>
+                            <div class="col-4" th:text="${korisnik.cel}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btcel">Измени</button></div>
+                            <div id="celDiv" class="d-none col-3">
+                                <select id="celInput" th:field="*{cel}" class="form-control">
+                                    <option th:each="c:${celi}"
+                                            th:value="${c.cel_id}"
+                                            th:utext="${c.cel}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="instruktor">
+                            <div class="col-3">Инструктор</div>
+                            <div class="col-4" th:text="${korisnik.instruktor}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btinstruktor">Измени</button></div>
+                            <div id="instruktorDiv" class="d-none col-3">
+                                <select id="instruktorInput" th:field="*{instruktor}" class="form-control">
+                                    <option th:each="i:${instruktori}"
+                                            th:value="${i.instruktor_id}"
+                                            th:utext="${i.username}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="programa_ishrana">
+                            <div class="col-3">Програма на исхрана</div>
+                            <div class="col-4" th:text="${korisnik.programa_za_ishrana}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="btishrana">Измени</button></div>
+                            <div id="ishranaDiv" class="d-none col-3">
+                                <select id="ishranaInput" th:field="*{programa_za_ishrana}" class="form-control">
+                                    <option th:each="is:${ishrani}"
+                                            th:value="${is.programa_ishr_id}"
+                                            th:utext="${is.ime_programa_ishr}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="programa_trening">
+                            <div class="col-3">Програма за тренинг</div>
+                            <div class="col-4" th:text="${korisnik.programa_za_trening}"></div>
+                            <div class="col-2"><button type="button" class="btn btn-danger" id="bttrening">Измени</button></div>
+                            <div id="treningDiv" class="d-none col-3">
+                                <select id="treningInput" th:field="*{programa_za_trening}" class="form-control">
+                                    <option th:each="tr:${treninzi}"
+                                            th:value="${tr.programa_trening_id}"
+                                            th:utext="${tr.ime_programa_trening}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10"></div>
+                            <div class="col-2">
+                                <button class="btn btn-success" type="submit">Зачувај</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

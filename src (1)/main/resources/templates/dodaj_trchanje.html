@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/header :: glava">
+<body>
+
+<div th:replace="fragments/header :: navbar"></div>
+
+<div class="banner">
+    <div class="container">
+        <div class="banner-text">
+            <div class="banner-heading">
+                Додај трчање
+            </div>
+            <div class="banner-sub-heading">
+
+                <form class="form-group" th:action="@{/dodaj_trchanje}" th:object="${dnevnikTrchanje}" method="post">
+
+                    <label class="ahh">Метри: <input id="metri" type="text" th:field="*{metri}"></label><br />
+                    <label class="ahh">Време: <input id="vreme" type="text" th:field="*{vreme_min}"></label><br />
+                    <input type="date" class="form-control" th:field="*{datum}"><br /> <br />
+
+                    <button  type="submit" class="btn btn-warning text-dark btn-banner" style="width: 220px">ДОДАДИ</button>
+                    <input  type="button" class="btn btn-warning text-dark btn-banner" value="НАЗАД" style="width: 220px">
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
